@@ -1,0 +1,2 @@
+# smalt.dev
+SMALT website
