@@ -11555,8 +11555,10 @@ html {
 }
 
 .bg-gradient-primary-to-secondary {
-  background: #1e30f3;
-  background: linear-gradient(135deg, #1e30f3 0%, #e21e80 100%);
+  /* background: #1e30f3; */
+  background: #f0f0f0;
+  /* background: linear-gradient(135deg, #1e30f3 0%, #e21e80 100%); */
+  background: linear-gradient(135deg, #f0f0f0 0%, #d3d3d3 100%);
 }
 
 .text-gradient {
@@ -11589,7 +11591,7 @@ html {
 }
 .profile .profile-img {
   height: 80vw;
-  max-height: 40rem;
+  max-height: 100%;
   position: absolute;
   bottom: 0;
   left: 50%;
