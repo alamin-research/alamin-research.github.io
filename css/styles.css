@@ -43,6 +43,7 @@
   --bs-light: #f8f9fa;
   --bs-dark: #212529;
   --bs-primary-rgb: 30, 48, 243;
+  --bs-flyers-torquoise-rgb: 89, 203, 232;
   --bs-secondary-rgb: 226, 30, 128;
   --bs-success-rgb: 25, 135, 84;
   --bs-info-rgb: 13, 202, 240;
@@ -52,6 +53,8 @@
   --bs-dark-rgb: 33, 37, 41;
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
+  --bs-torquoise-rgb: 89, 203, 232;
+  --bs-flyers-blue-rgb: 0, 48, 135;
   --bs-body-color-rgb: 33, 37, 41;
   --bs-body-bg-rgb: 255, 255, 255;
   --bs-font-sans-serif: "Plus Jakarta Sans";
@@ -8185,7 +8188,7 @@ textarea.form-control-lg {
 /* rtl:end:remove */
 .text-primary {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
+  color: rgba(var(--bs-flyers-torquoise-rgb), var(--bs-text-opacity)) !important;
 }
 
 .text-secondary {
@@ -8230,7 +8233,7 @@ textarea.form-control-lg {
 
 .text-white {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
+  color: rgba(var(--bs-flyers-red-rgb), var(--bs-text-opacity)) !important;
 }
 
 .text-body {
@@ -11568,7 +11571,7 @@ html {
   background: linear-gradient(135deg, #f0f0f0 0%, #d3d3d3 100%);
 }
 .text-gradient {
-  background: -webkit-linear-gradient(315deg, #1e30f3 0%, #e21e80 100%);
+  background: -webkit-linear-gradient(315deg, #003087 0%, #CE0037 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
