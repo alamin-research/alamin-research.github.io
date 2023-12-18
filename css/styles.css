@@ -82,6 +82,7 @@
   --bs-highlight-bg: #fff3cd;
   --bs-researchgate-color: #00CCBB;
   --bs-linkedin-color: #0077B5;
+  --bs-orcid-color: #A6CE39;
 }
 
 *,
@@ -8252,6 +8253,10 @@ textarea.form-control-lg {
 .text-color-researchGate{
   --bs-text-opacity: 1;
   color: var(--bs-researchgate-color) !important;
+}
+.text-color-orcid{
+  --bs-text-opacity: 1;
+  color: var(--bs-orcid-color) !important;
 }
 .text-white {
   --bs-text-opacity: 1;
