@@ -80,6 +80,8 @@
   --bs-link-hover-color: #4BDEFB;
   --bs-code-color: #e21e80;
   --bs-highlight-bg: #fff3cd;
+  --bs-researchgate-color: #00CCBB;
+  --bs-linkedin-color: #0077B5;
 }
 
 *,
@@ -8239,6 +8241,18 @@ textarea.form-control-lg {
   color: rgba(var(--bs-black-rgb), var(--bs-text-opacity)) !important;
 }
 
+.text-red{
+  --bs-text-opacity: 1;
+  color: red !important;
+}
+.text-color-linkedin{
+  --bs-text-opacity: 1;
+  color: var(--bs-linkedin-color) !important;
+}
+.text-color-researchGate{
+  --bs-text-opacity: 1;
+  color: var(--bs-researchgate-color) !important;
+}
 .text-white {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-flyers-red-rgb), var(--bs-text-opacity)) !important;
@@ -11751,12 +11765,4 @@ html {
     left: -2vw;
   }
 
-  .icon-color-linkedin
-  {
-    color: #0077B5;
-  }
-  .icon-color-twitter
-  {
-    color: #000000;
-  }
 }
