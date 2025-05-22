@@ -1,1 +1,64 @@
 *.db
+# LaTeX auxiliary and intermediate files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.dvi
+*.log
+*.lof
+*.lot
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex
+*.xdv
+
+# Bibliography-related files
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+
+# Editor and temporary files
+*.bak
+*~
+*.swp
+*.swo
+*.backup
+*.tmp
+*.lock
+
+# PDF and other output files
+*.pdf
+!Figures/*.pdf
+!submissionProof/*.pdf
+*.ps
+*.eps
+
+# Generated files from TikZ or other tools
+*.svg
+*.png
+!Figures/*.png
+!Figures/CHGCAR_Fig/*.png
+
+# MacOS and system files
+.DS_Store
+Thumbs.db
+
+# TeXWorks
+*.pdfsync
+
+# Overleaf and cloud-based LaTeX editors
+.auto/
+
+# Temporary Word files
+~$*
+*.tmp
+*.wbk
+*.asd
+
+# all files in media
+!media/*.*
