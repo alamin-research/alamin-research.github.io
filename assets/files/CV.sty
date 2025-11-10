@@ -1,0 +1,227 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{CV}[2023/12/20 Custom CV formatting package]
+
+% Required packages
+\RequirePackage{changepage}
+\RequirePackage{etoolbox}
+\RequirePackage{fontawesome5}
+\RequirePackage{geometry}
+\RequirePackage[unicode]{hyperref} % for links, metadata and bookmarks
+\RequirePackage{ifthen}
+\RequirePackage{xcolor}
+\RequirePackage{xstring}
+
+% Page Geometry Settings
+\geometry{
+    ignoreheadfoot, % set margins without considering header and footer
+    top=1 in, % seperation between body and page edge from the top
+    bottom=1 in, % seperation between body and page edge from the bottom
+    left=1 in, % seperation between body and page edge from the left
+    right=0.75 in, % seperation between body and page edge from the right
+    footskip=0.5 in, % seperation between body and footer
+    % showframe % for debugging 
+}
+
+% University Color Schemes (defined before hypersetup)
+\definecolor{MajorColor}{HTML}{003087}
+\definecolor{MajorColorInactive}{HTML}{034778}
+\definecolor{MinorColor}{HTML}{CE0037}
+\definecolor{MinorColorInactive}{HTML}{CE1141}
+
+\hypersetup{
+    pdftitle={Abdullah Amin's CV}, 
+    pdfauthor={Abdullah A. Amin}, 
+    pdfcreator={LaTeX with RenderCV}, 
+    colorlinks=true, 
+    urlcolor=MajorColorInactive,
+}
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+
+% --- Layout and footer moved from main .tex ---
+% Remove extra space before adjustwidth blocks
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
+
+% Global layout defaults
+\AtBeginDocument{%%
+    \setcounter{secnumdepth}{0}%% no section numbering
+    \setlength{\parindent}{0pt}%% no indentation
+    \setlength{\columnsep}{0pt}%% set column separation
+}
+
+% Custom footer style based on plain; shows "Page X of Y" with name
+\let\ps@customFooterStyle\ps@plain
+\patchcmd{\ps@customFooterStyle}{\thepage}{%%
+    \color{gray}\textit{\small Abdullah A. Amin - Page \thepage{} of \pageref*{LastPage}}%%
+}{}{}
+
+% Activate the custom footer style
+\AtBeginDocument{\pagestyle{customFooterStyle}}
+
+% --- Section title formatting (uses titlesec, needspace) ---
+% Defer to begin document to ensure titlesec is loaded
+\AtBeginDocument{%%
+  \titleformat{\section}{%%
+      \needspace{4\baselineskip}%% avoid page break after title
+      \Large\color{MajorColor}%% size and color
+  }{}{ }{%%
+    \phantomsection\textbf{#1}\hspace{0.15cm}\titlerule[0.8pt]\hspace{-0.1cm}%% title rule
+  }[]
+
+  \titlespacing{\section}{1pt}{1 pt}{0.2 cm}
+}
+
+% --- Custom environments ---
+% Highlights list
+\newenvironment{highlights}{%%
+  \begin{itemize}[topsep=1 pt,parsep=1 pt,partopsep=1 pt,itemsep=1 pt,leftmargin=20 pt]
+}{%%
+  \end{itemize}
+}
+
+% Highlights for bullet entries
+\newenvironment{highlightsforbulletentries}{%%
+  \begin{itemize}[topsep=1 pt, parsep=1 pt, partopsep=0pt,itemsep=0pt,leftmargin=10pt]
+}{%%
+  \end{itemize}
+}
+
+% One-column entry wrapper
+\newenvironment{onecolentry}{%%
+  \begin{adjustwidth}{0.2 cm + 0.00001 cm}{0.2 cm + 0.00001 cm}
+}{%%
+  \end{adjustwidth}
+}
+
+% Two-column entry
+\newenvironment{twocolentry}[2][]{%%
+  \onecolentry
+  \def\secondColumn{#2}
+  \setcolumnwidth{\fill, 4.5 cm}
+  \begin{paracol}{2}
+}{%%
+  \switchcolumn \raggedleft \secondColumn
+  \end{paracol}
+  \endonecolentry
+}
+
+% Three-column entry
+\newenvironment{threecolentry}[3][]
+{%
+  \onecolentry 
+  \def\thirdColumn{#3}
+  \ifstrempty{#1}{\setcolumnwidth{40 pt, \fill, 40 pt}}
+  {
+    \setcolumnwidth{#1}
+  } 
+  \begin{paracol}{3}
+    {
+      \raggedright #2
+    } 
+  \switchcolumn
+  }
+  {% 
+    \switchcolumn 
+    \raggedleft 
+    \thirdColumn 
+    \end{paracol} 
+    \endonecolentry 
+  }
+
+
+% Header environment
+\newenvironment{header}{%%
+  \setlength{\topsep}{0pt}\par\kern\topsep\centering\color{MinorColor}\linespread{1.5}
+}{%%
+  \par\kern\topsep
+}
+
+% Last-updated stamp in page foreground
+\newcommand{\placelastupdatedtext}{%% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{%% Add <stuff> to current page foreground
+    \put(\LenToUnit{\paperwidth-2 cm-0.2 cm+0.05cm},\LenToUnit{\paperheight-1.0 cm}){%%
+      \vtop{{\null}\makebox[0pt][c]{\small\color{gray}\textit{Last updated: \today}\hspace{\widthof{Last updated in September 2024}}}}
+    }
+  }
+}
+
+% Save original href and add external-link icon on use
+\let\hrefWithoutArrow\href
+
+\renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}
+
+% Keep your title-as-link code
+\DeclareFieldFormat[article]{title}{%
+  \ifboolexpr{ test {\iffieldundef{doi}} }%
+    {\ifboolexpr{ test {\iffieldundef{url}} }{#1}{\href{\thefield{url}}{#1}}}%
+    {\href{https://doi.org/\thefield{doi}}{#1}}%
+}
+
+% Don't print DOI/URL/eprint blocks at the end of entries, but KEEP the fields
+\AtBeginBibliography{%
+  \renewbibmacro*{doi+eprint+url}{}% common macro that prints these
+  \renewbibmacro*{url+urldate}{}% some styles use this pair
+}
+
+% Hide the "(visited on ...)" without clearing url/doi
+\DeclareFieldFormat{urldate}{}   % or:
+\renewbibmacro{in:}{}
+% Remove ISSN/ISBN and similar identifiers
+\AtEveryBibitem{%
+  \clearfield{issn}%
+  \clearfield{isbn}%
+  \clearfield{isrn}%
+}
+
+
+% Use semicolons between all author names
+\DeclareDelimFormat{multinamedelim}{\addsemicolon\space}
+\DeclareDelimFormat{finalnamedelim}{\addsemicolon\space}
+\DeclareDelimFormat{andothersdelim}{\addsemicolon\space}
+
+
+% --- Author name format: semicolon-delimited; underline your own name robustly ---
+\DeclareNameFormat{author}{%
+  % Insert delimiter between names: “; ” except before the first
+  \ifthenelse{\value{listcount}=1}{}{\addsemicolon\space}%
+  % Split this name into parts
+  \nameparts{#1}%
+  % Build "prefix + family" so we can catch “Al Amin”
+  \edef\FullFamily{\ifblank{\namepartprefix}{}{\namepartprefix\space}\namepartfamily}%
+  % Match family variants
+  \def\FamOK{0}%
+  \IfSubStr{\FullFamily}{Amin}{\def\FamOK{1}}{}%
+  \IfSubStr{\FullFamily}{Al Amin}{\def\FamOK{1}}{}%
+  % Match given variants (Abdullah / A. / A…)
+  \def\GivenOK{0}%
+  \IfBeginWith{\namepartgiven}{Abdullah}{\def\GivenOK{1}}{}%
+  \IfBeginWith{\namepartgiven}{A.}{\def\GivenOK{1}}{}%
+  \IfBeginWith{\namepartgiven}{A}{\def\GivenOK{1}}{}%
+  % Print name (underline only if both match)
+  \ifnum\FamOK=1\relax
+    \ifnum\GivenOK=1\relax
+      \begingroup
+        \let\mkbibnamegiven\uline
+        \let\mkbibnamefamily\uline
+        \let\mkbibnameprefix\uline
+        \usebibmacro{name:family-given}
+          {\namepartfamily}{\namepartgiven}{\namepartprefix}{\namepartsuffix}%
+      \endgroup
+    \else
+      \usebibmacro{name:family-given}
+        {\namepartfamily}{\namepartgiven}{\namepartprefix}{\namepartsuffix}%
+    \fi
+  \else
+    \usebibmacro{name:family-given}
+      {\namepartfamily}{\namepartgiven}{\namepartprefix}{\namepartsuffix}%
+  \fi
+  \usebibmacro{name:andothers}%
+}
