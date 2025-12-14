@@ -166,6 +166,12 @@
 
 \renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}
 
+\DeclareSortingScheme{pubdate}{
+  \sort[direction=descending]{\field{sortyear}\field{year}}
+  \sort[direction=descending]{\field{month}}
+  \sort[direction=descending]{\field{day}}
+}
+
 % Keep your title-as-link code
 \DeclareFieldFormat[article]{title}{%
   \ifboolexpr{ test {\iffieldundef{doi}} }%

@@ -3,7 +3,7 @@
 % Packages:
 \usepackage{amsmath} % for math
 \usepackage{array} % tabularx requires this
-\usepackage[backend=biber,style=numeric,sorting=ydnt, maxnames=999, defernumbers=true]{biblatex}
+\usepackage[backend=biber,style=numeric, sorting=pubdate, maxnames=999, defernumbers=true]{biblatex}
 \usepackage{calc} % for calculating lengths
 \usepackage{CV}
 \usepackage{bookmark} % for bookmarks
@@ -327,7 +327,7 @@ Spring) of courses.
 (Mentees are in red text with an asterisk *)
 \nocite{*}
 \begin{refcontext}[labelprefix=C]
-    \printbibliography[heading=none, type=inproceedings, title={Conference Papers}]
+    \printbibliography[heading=none, type=inproceedings, sorting=pubdate, title={Conference Papers}]
 \end{refcontext}
 
 \section{Conference Posters}
@@ -471,6 +471,7 @@ of Engineering and Technology, Dhaka. (2004 - 2008)
     \begin{itemize}
         \item \textbf{Grant Review Panels}
         \begin{enumerate}[label=\arabic*., itemsep=-1pt, topsep=2pt]    
+            \item Ad-hoc Reviewer, NextFlex, NextFlex's Project Call 10.0, May, 2024.
             \item Panelist, National Science Foundation, Advanced Manufacturing, April 2025.
             \item Ad-hoc Reviewer, National Science Foundation, Advanced Manufacturing, March 2025.
             \item Panelist, National Science Foundation, Partnerships for Research and Education in Materials (PREM), April, 2024.
