@@ -29,6 +29,19 @@
 \addbibresource{references.bib}
 
 
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      % Look at the "type" field in the .bib entry
+      \step[fieldsource=type, match=\regexp{Poster}]
+      % If it matches, add/append the keyword "poster"
+      \step[fieldset=keywords, fieldvalue={poster}, append]
+    }
+  }
+}
+
+
+
 
 \begin{document}
     \newcommand{\AND}{\unskip
@@ -304,66 +317,220 @@ Spring) of courses.
     \vspace{5 pt}
 
 \section{Journal Articles}
+(Mentees are in red text with an asterisk *)
 \nocite{*}
 \begin{refcontext}[labelprefix=J]
     \printbibliography[heading=none, type=article, title={Journal Articles}]
 \end{refcontext}
 
 \section{Conference Proceedings}
+(Mentees are in red text with an asterisk *)
 \nocite{*}
 \begin{refcontext}[labelprefix=C]
     \printbibliography[heading=none, type=inproceedings, title={Conference Papers}]
 \end{refcontext}
 
+\section{Conference Posters}
+(Mentees are in red text with an asterisk *)
+\nocite{*}
+\begin{refcontext}[labelprefix=P]
+    \printbibliography[heading=none, type=misc, keyword=poster, title={Posters}]
+\end{refcontext}
 
-\section{Projects}
-   
-    \begin{twocolentry}{
-        \href{https://github.com/sinaatalay/rendercv}{github.com/name/repo}
-    }
-        \textbf{Multi-User Drawing Tool}
-        \begin{highlights}
-            \item Developed an electronic classroom where multiple users can simultaneously view and draw on a "chalkboard" with each person's edits synchronized
-            \item Tools Used: C++, MFC
-        \end{highlights}
-    \end{twocolentry}
-
-
-    \vspace{0.2 cm}
-
-    \begin{twocolentry}{
-        \href{https://github.com/sinaatalay/rendercv}{github.com/name/repo}
-    }
-        \textbf{Synchronized Desktop Calendar}
-        \begin{highlights}
-            \item Developed a desktop calendar with globally shared and synchronized calendars, allowing users to schedule meetings with other users
-            \item Tools Used: C\#, .NET, SQL, XML
-        \end{highlights}
-    \end{twocolentry}
-
-    \vspace{0.2 cm}
-
-    \begin{twocolentry}{
-        2002
-    }
-        \textbf{Custom Operating System}
-        \begin{highlights}
-            \item Built a UNIX-style OS with a scheduler, file system, text editor, and calculator
-            \item Tools Used: C
-        \end{highlights}
-    \end{twocolentry}
+\section{Patents}
+(Mentees are in red text with an asterisk *)
+\nocite{*}
+\begin{refcontext}[labelprefix=P]
+    \printbibliography[heading=none, type=patent, title={Patents}]
+\end{refcontext}
 
 
-\section{Technologies}
-   
-    \begin{onecolentry}
-        \textbf{Languages:} C++, C, Java, Objective-C, C\#, SQL, JavaScript
-    \end{onecolentry}
+\section{Honors \& Awards}
+   \begin{enumerate}[label=\arabic*., itemsep=-1pt, topsep=2pt]
+        \item \textbf{Honorable Mention}, NIST-AMBench 2025, Best Modeling Results Predicting the Melt Pool Geometry for a Scanned Laser with residual heat for a multi-track scanning, November 2025.
+        \item \textbf{Participant}, NASA GPU Hackathon 2022. (September 19, 26-28). Only nine teams selected worldwide.
+        \item \textbf{1st Place}, NIST-AMBench 2022, CHAL-AMB2022-03-PSCR: Best modeling results predicting the cooling rate immediately following solidification at specified locations within 2D scan tracks on IN718, August 2022.
+        \item \textbf{1st Place}, NIST-AMBench 2022, CHAL-AMB2022-03-PMPG: Best modeling results predicting the melt pool geometry at specified locations within 2D laser scan tracks on IN718, August 2022.
+        \item \textbf{1st Place} NIST-AMBench 2022, CHAL-A-AMB2022-01-Scan-MWD \& ASR Scan Geometry: Best modeling results predicting the melt pool geometry for a scanned laser weld, August 2022.
+        \item \textbf{2nd Place},  NIST-AMBench 2022, CHAL-AMB2022-03-TTAM: Modeling results predicting the time above melting temperature for individual laser tracks on IN718 with different processing conditions, August 2022.
+        \item \textbf{Fellow}, NSF CMMI Game Changer Academies for Advancing Research Innovation, December 2021
+        \item \textbf {NSF Fellow as Conference Attendee}, Mechanistic Machine Learning and Digital Twins for Computational Science, Engineering \& Technology (July 30, 2021).
+        \item \textbf{Contest Runner-Up}, Superconductivity News Forum (SNF), Applied Superconductivity Conference (October 2016).
+        \item \textbf{Financial Assistance}, Applied Superconductivity Conference, Denver, Colorado; USA (September 2016).
+        \item \textbf{Fellow (Summer Short Course)}, MIT Professional Education, Multiscale Material Design, Boston, USA (Summer 2016) [Covered 50\% of the Registration]
+        \item \textbf{Graduate Student Travel Award}, Graduate School, Case Western Reserve University (May 2016).
+        \item \textbf{ISMRM Educational Stipend}, 23rd annual meeting of ISMRM, Singapore City, Singapore (May 2016).
+        \item \textbf{ISMRM Educational Stipend}, 22nd annual meeting of ISMRM, Toronto, Canada (May 2016).
+        \item \textbf{Travel Grant}, Sweden-Bangladesh Trust Fund, December 2011.
+        \item \textbf{University Blazer}, Award recognizing international representation to ABU Robocon 2008 on behalf of Bangladesh University
+        \item \textbf{Merit Scholarship}, Bangladesh University
+of Engineering and Technology, Dhaka. (2004 - 2008)
+    \end{enumerate}
 
-    \vspace{0.2 cm}
+\section{Professional Membership}
+    \begin{enumerate}[label=\arabic*., itemsep=-1pt, topsep=2pt]
+        \item United State Association for Computational Mechanics (2018, 2022 - Present)
+        \item The Minerals, Metals \& Materials Society (2022 - Present)
+        \item Tire Society (2018 - 2021)
+        \item Society of Automotive Engineering (2018)
+        \item IEEE Council of Superconductivity (2016 - 2017)
+        \item International Society of Magnetic Resonance in Medicine (2015-2016)
+    \end{enumerate}
+    
+\section{Software Programs}
+    \begin{enumerate}[label=\arabic*., itemsep=-1pt, topsep=2pt]
+        \item \href{https://github.com/neoceph/AM-CFD}{AM-CFD: An FVM based Additive Manufacturing Part Modeling Program} (2024 - present) 
+        \item Fire F\&M: HYbrid analytical-FEM tire force analysis program (Bridgestone Propreitary)
+        \item \href{https://nanohub.org/resources/fgmbuilder}{LAMMPS Input Structure Generator for Functionally Graded Materials (FGM) - M S H Thakur, M Islam, A Amin, S Mojunder, M M Islam (2019)}
+    \end{enumerate}
 
-    \begin{onecolentry}
-        \textbf{Technologies:} .NET, Microsoft SQL Server, XCode, Interface Builder
-    \end{onecolentry}   
+\section{Workshops}
+    \begin{enumerate}[label=\arabic*., itemsep=-1pt, topsep=2pt]
+        \item \textbf{Co-Instructor}, Mechanistic Data Science for STEM students, Northwestern University, May 30 - August 10, 2022.
+        \item \textbf{Participant}, CMMI Game Changer Academics, NSF Division of CMMI, May 18, 2022
+        \item Co-organizer
+    \end{enumerate}
+
+\section{Awarded External Grants}
+    \begin{enumerate}[label=\arabic*., itemsep=-1pt, topsep=2pt]
+        \item \textbf{August 2025, PI}, "Hot Cracking and Porosity Detection in Metal Additive Manufacturing using Eddy Current Sensor", National Science Foundation, \$125,000.
+    \end{enumerate}
+
+    \section{Awarded Internal Grants}
+    \begin{enumerate}[label=\arabic*., itemsep=-1pt, topsep=2pt]
+        \item \textbf{Summer 2026, PI}, "Rapid Additive Manufacturing of Kirigami-Inspired Aircraft Structures", Summer Undergraduate Research Experience Program, University of Dayton, \$6,250.
+        \item \textbf{August 2025, Co-I}, "University of Dayton Supercritical Carbon Dioxide Center of Excellence: Experimental Investigation of Blended sCO2 Power Cycle Heat Exchangers", University of Dayton School of Engineering Post-Doctoral Research Fellow Program, 2023, \$20,000. Investigators: A.J. Schrader (PI), R.B. Mulford (Co-I), C.T. Wanstall (Co-I), R.L. Lowe (Co-I).
+        \item \textbf{August 2025, PI}, "Experiential Learning Innovation Fund", University of Dayton, \$1,500.
+        \item \textbf{Summer 2025, PI}, "Defect detection and part quality improvements for metal additive manufacturing", Research Council Seed Grant, University of Dayton, \$6,500.
+        \item \textbf{August 2024, PI}, "Experiential Learing Innovation Fund", University of Dayton, \$750. Investigators: A.A. Amin (PI), Dr. D. Myszka (Co-PI).
+        \item \textbf{Summer 2024, PI}, "UD-UDRI Summer Faculty Fellow", University of Dayton-University of Dayton Research Institute, \$14,500.
+        \item \textbf{Summer 2024, PI}, "Reduce defect and improve part quality for metal additive manufacturing", Summer Undergraduate Research Experience Program, University of Dayton, \$6,250.
+    \end{enumerate}
+
+\section{Awarded Grants Pre UDayton}
+    \begin{enumerate}[label=\arabic*., itemsep=-1pt, topsep=2pt]    
+        \item \textbf{August 11, 2022, PI}, NASA GPU Hackathon 2022, Three-day intensive GPU training, NASA-NVIDIA.
+        \item \textbf{April 2022, Contributing Author}, “GPU Accelerated Computational Mechanics at Northwestern University”, McCormick Equipment Awards, \$20,000.
+        \item \textbf{December 3, 2021, Contributing Author}, GPU accelerated computational modeling of laser powder bed additive manufacturing of metallic parts. Quest High-Performance Computing Cluster, Northwestern University. 35,000 Compute hours.
+        \item \textbf{April 2021, Contributing Author}, “Thermal-CFD simulation of melt pool dynamics in additive manufacturing of metals”, XSEDE Startup Grant, 2,500 GPU compute hours.
+        \item \textbf{November, 2016, Co-PI}, "Crystis: A biocrystal detection system", VentureWell, USA. \$5,000.
+        \item \textbf{August, 2016, Contributing Author}, "Supercomputer to model MRI quench strains", Ohio Supercomputer Center. \$ 50,000 Compute hours.
+    \end{enumerate}
+\section{Pending Grants}
+    \begin{enumerate}[label=\arabic*., itemsep=-1pt, topsep=2pt]
+        \item \textbf{June 2025, Co-I}, "Accelerating the Manufacturing Advantage for OHIO", Ohio Department of Higher Education, Investigators: Ohio State University, University of Cincinnati, Miami University, Wright State University, Central State University, Shawnee State University, Ohio University, Bowling Green State University, University of Toledo, Cleveland State University, Case Wesetern Reserve University, Kent State University, University of Akron, Youngstone State University. \$20,000,000, UDayton Share \$1,750,854.
+    \end{enumerate}
+
+\section{Unsuccessful Grants}
+    \begin{enumerate}[label=\arabic*., itemsep=-1pt, topsep=2pt]
+        \item \textbf{May 2025, PI}, "Defect Free Liquid Rocket Engine Component Manufacturing by In-situ Control of Additive Manufacturing Process through Transformer Network", Amazon Research Awards, Co-PI: Wright State University. \$100,000.
+        \item \textbf{April 2025, PI}, "Digital Twin Framework for Additive Manufacturing of Defect Free Hypersonic Grade Refractory Alloys", Ohio Federal Research Network Round 7, Co-PIs: Wright State University, GE Aerospace. \$1,215,469.26, UDayton Share: \$468,098.06.
+        \item \textbf{April 2025, PI}, "Machine Learning-Enabled Multiscale, Multiphysics Computational Modeling Framework for Accelerated Spherical Tokamak Design.", Department of Energy, Early Career Research Program, Announcement: DE-FOA-0003450. \$875,000.
+        \item \textbf{April 2025, Co-I}, "HV/HP Switchgear for Aerospace Electrification", Ohio Federal Research Network Round 7, PIs\/Co-PIs: University of Akron, PC Krause and Associates. \$1,189,622, UDayton Share: \$194,851.
+        \item \textbf{April 2025, Co-I}, "NSF Engine: Kentucky Additive Manufacturing Engine (KY-AME)", National Science Foundation, Co-PIs: University of Kentucky. \$718,173.
+        \item \textbf{February 2025, Co-PI}, "Promoting Resilient Industries with Manufacturing and Emerging Artificial Intelligence (PRIME AI): Manufacturing Institute", National Institute of Standards and Technology, Investigators: (G. E. Kremer, R. L. Lowe, A.A. Amin, A. J. Schrader, V.K. Asari, L. Cao, E. E. Gunay, K. Hallinan, K. Hirakawa, S. J. Langley-Turnbaugh) University of Dayton, (K.A. Beigh, A. B. Morgan, B. N. Naryanan) University of Dayton Research Institute, (Kaber, D., M. I. Campbell, A. Dong, K. R. Haapala, C. Hoyle, P. -H., Hsieh, D. Lin, K. Murali, D. J. Roach, A. H. Vergara, Z. Wu) Oregon State University, (C. Christodoulou, C. Danielson, M. Devetsikiotis, R. Fierro, X. Sun) University of New Mexico, (D. C. Chrzan, C. Grigoropoulos, G. X. Gu, P. Hosemann, X. Zheng, T. Zodhi) University of California Berkeley, (R. Pavel) ARCTOS Technology Solutions LLC. \$70,000,000.
+        \item \textbf{July 2024, Co-PI}, "MessengerAM: Multimodal-enabled structural safety engine for Additive Manufacturing", DARPA, Defense Sciences Office, Announcement: HR001124S0018, Investigators: (G. Wagner) Northwestern University, (W. K. Liu, D. Qian) HIDENN-AI, (F. M. Carter) DMG MORI Federal Services, (S. Mojumder) Washing State University, (S. Saha) Virginia Polytechnic Institue and State University, (O. Kafka) National Institute of Standards and Technology, (Y. Lu) University of Maryland Baltimore County, (W. Xiong) University of Pittsburgh, (T. Osborn, ) University of Dayton Research Institute. \$13,626,055, UDayton Share: \$500,000.
+        \item \textbf{June 2024, PI}, "Magneto-Electro-Thermo-Mechanical Field Interaction Study for Hypersonic Material by a Temperature-Assisted Eddy Current Sensor", Air Force Office of Scientific Research, (AFOSR), Announcement: FOAAFRLAFOSR20240004, \$450,000.
+        \item \textbf{March 2024, PI}, "SALT-NIBs: Smart Additive-Subtractive Laser Technology for Sodium-ion Batteries", Department of Energy, Announcement: DE-FOA-0003236, Platform Technologies for Transformative Battery Manufacturing, Investigators: (A.A. Amin, R. L. Lowe, A. J. Schrader) University of Dayton, (T. Osborn) University of Dayton Research Institute, (M. Islam) Wayne State University. \&1,800,000, Cost Share: \$420,000, UDayton Share: \$1,330,000.
+        \item \textbf{March 2024, PI}, "Laser Powder Bed Fusion Additive Manufacturing of Reticulated Porous Structure of CaMnO \textsubscript{3}", Department of Energy, Announcement: DE-FOA-0003308, Small Innovative Projects in Solar: Concentrating Solar Power and Photovoltaics (SIPS: CSP \& PV), Investigators: (A. Ambrosini) Sandia National Laboratory, (A. A. Amin, A. J. Schrader, R. L. Lowe) University of Dayton\$500,000, Cost Share: \$100,000, UDayton Share: \$400,000.
+    \end{enumerate}
+
+\section{Unsuccessful Grants Pre UDayton}
+    \begin{enumerate}[label=\arabic*., itemsep=-1pt, topsep=2pt]    
+        \item \textbf{September 2022, Contributing Author}, “CDS\&E\/Collaborative Research: Convolution HiDeNN-Tensor Decomposition for Integrating Multiscale Topological Optimization with Additive Manufacturing”.
+        \item \textbf{August 2021, Contributing Author}, “Hierarchical Deep Learning Neural Networks Artificial Intelligence (HiDeNN-AI)”, NSF-SBIR.”, National Science Foundation.
+        \item \textbf{January 2022, Contributing Author}, Hybrid Equivalence- and Model-Based Approach for Machine-to-Machine Fatigue Life Qualification” NIST Metals-based Additive Manufacturing Grant Program. 
+        \item \textbf{December 2021, Contributing Author}, Collaborative Research: Framework Implementations: HiDeNN-CI: Hierarchical Deep-learning Neural Network Cyberinfrastructure,” NSF - Cyberinfrastructure for Sustained Scientific Innovation.
+    \end{enumerate}
+
+\section{Invited Talks}
+    \begin{enumerate}[label=I\arabic*., itemsep=-1pt, topsep=2pt]    
+        \item “Multiscale Multiphysics Computational Modeling: A Perspective in Additive Manufacturing, Magnetic Resonance Imaging Research, and Automotive Tire Analysis,” Abdullah Al Amin, University of Wisconsin-Milwaukee, April 26, 2023.
+        \item “Multiscale Multiphysics Computational Modeling: A Perspective in Additive Manufacturing, Magnetic Resonance Imaging Research, and Automotive Tire Analysis,” Abdullah Al Amin, Florida Institute of Technology, April 19, 2023.
+        \item “Large Scale System Design with Multiphysics and Multiscale Analysis: Applications in MRI Magnet and Additive Manufacturing,” Abdullah Al Amin, South Dakota School of Mines, March 9, 2023.
+        \item “Winning 2022 NIST Additive Manufacturing Benchmark Challenge and Beyond”, Abdullah Al Amin, University of Dayton, March 6, 2023.
+        \item “Multiscale Multiphysics Computational Modeling: A Perspective in Automotive Tire, Additive Manufacturing, and Magnetic Resonance Imaging Research,” Abdullah Al Amin, University of Akron, March 3, 2023.
+        \item “Winning the NIST AM Bench Challenge by Successfully Predicting the Laser Powder Bed Fusion Process,” Abdullah Al Amin, University of Houston, February 28, 2023.
+        \item “Predicting the Laser Powder Bed Fusion Process for Metal Additive Manufacturing”, Abdullah Al Amin, University of Minnesota Duluth, February 6, 2023.
+        \item “AM-CFD: a Well-validated Thermal-fluid Simulator for Additive Manufacturing Part Qualification”, Yangfan Li, Abdullah Al Amin, Sourav Saha, Wing Kam Liu, August 18, 2022, Additive Manufacturing Benchmarks (AM-Bench 2022), Bethesda, MD.
+        \item “Building the Next Generation Magnetic Resonance Imaging (MRI) Machines,” October 2017, Intel Corporation, Oregon, USA.
+        \item “Next Generation Magnetic Resonance Imaging (MRI) Magnet,” August 2017, Bridgestone Americas, Ohio, USA.
+        \item "A comparative study of coil winding techniques of a full body 1.5 T MgB\textsubscript{2} based MRI magnets."April 2017, ISMRM 25th annual meeting \& exhibition, Hawaii, USA.
+        \item "Effect of Mechanical Support Conditions of Winding on the Strain Development of a Composite MgB\textsubscript{2} Based Full Body, MRI Coil." October 2016, Applied Superconductivity Conference, Denver, Colorado, USA.
+        \item "A Computational Study to Find an Optimal RRR Value for a 1.5 T Persistent-Mode ConductionCooled MgB\textsubscript{2} MRI Magnet from a Quench Protection Point of View." October 2016, Applied Superconductivity Conference, Denver, Colorado, USA.
+        \item "Variation in strain characteristics for multiscale multiphysics models of a 1.5T conduction cooled MRI system based on a 36 filament MgB\textsubscript{2} composite wire." May 2016, ISMRM 24th annual meeting \& exhibition, Singapore City, Singapore.
+        \item "Stress and Strain Sensitivity Study of 1.5T Conduction Cooled MgB\textsubscript{2} Magnet Design." May 2016, ISMRM 23rd annual meeting \& exhibition, Toronto, Canada.
+        \item “High throughput microparticle separation on curved microchannel based on inertial microfluidics.” September 2013, Intel Corporation, Oregon USA.
+    \end{enumerate}    
+
+\section{Services}
+    \begin{itemize}
+        \item Grant Review Panels
+        \begin{enumerate}[label=\arabic*., itemsep=-1pt, topsep=2pt]    
+            \item Panelist, National Science Foundation, Advanced Manufacturing, April 2025.
+            \item Ad-hoc Reviewer, National Science Foundation, Advanced Manufacturing, March 2025.
+            \item Panelist, National Science Foundation, Partnerships for Research and Education in Materials (PREM), April, 2024.
+            \item Panelist, National Science Foundation, Communications, Circuits and Sensing-Systems, Division of Electrical, Communications and Cyber Systems, November, 2023.
+        \end{enumerate}
+        \item Conference Session Chair
+        \begin{enumerate}[label=\arabic*., itemsep=-1pt, topsep=2pt]    
+            \item Session Chair, ‘Materials 1’, 49th Dayton-Cincinnati Aerospace Sciences Symposium, Dayton, OH, March 5, 2024.
+        \end{enumerate}
+        \item Journal Reviewer
+        \begin{enumerate}
+            \item Additive Manufacturing
+            \item Advances in Mechanical Engineering
+            \item Acta Metallurgica Sinica
+            \item Applied Thermal Engineering
+            \item Computational Mechanics
+            \item Engineering Applications of Artificial Intelligence
+            \item Engineering Research Express
+            \item Nondestructive Testing and Evaluation
+            \item IEEE Industrial Electronics Society
+            \item IEEE Access
+            \item IEEE Industrial Informatics
+            \item IEEE Reliability Society
+            \item International Journal of Mechanical Sciences
+            \item Journal of Industrial Information Integration
+            \item Journal of Materials Engineering and Performance
+            \item Qeios
+            \item Results in Engineering
+            \item Scientific Reports
+            \item SME Journal of Manufacturing Processes
+            \item Superconductor Science and Technology
+            \item International Journal of Computer Integrated Manufacturing
+            \item Digital Twin
+            \item Materials Technology
+        \end{enumerate}
+    \end{itemize}
+
+\section{Mentorship}
+    \begin{itemize}[itemsep=-1pt, topsep=2pt]
+        \item University of Dayton
+        \begin{enumerate}[label=\arabic*., itemsep=-1pt, topsep=2pt]
+            \item \textbf{Husam Alboush}, Undergraduate Researcher, Summer 2025
+            \item \textbf{Rahul Singha Rathun}, Graduate Researcher, Fall 2024 - Present
+            \item \textbf{Caleb Tanner}, Doctoral Student, Fall 2024 - present
+            \item \textbf{Ian  Wall}, Undergraduate Researcher, Summer 2024 - Fall 2024
+            \item \textbf{Liam Howley}, Undergraduate Researcher, Summer 2024
+        \end{enumerate}
+        \item Northwestern University
+        \begin{enumerate}
+            \item \textbf{Jiachen Guo}, Graduate Student, Northwestern University. (2022-2023)
+            \item \textbf{Satyajit Mojumder}, Graduate Student, Northwestern University. (2021-2023)
+            \item \textbf{Sourav Saha}, Graduate Student, Northwestern University. (2021-2023)
+            \item \textbf{Hengyang Li}, Graduate Student, Northwestern University. (2021-2023)
+            \item \textbf{Yangfan Li}, Graduate Student, Northwestern University. (2021-2023)
+        \end{enumerate}
+        \item Remote Mentoring
+        \begin{enumerate}
+            \item \textbf{Rabiul Hasan Kabir}, Bangladesh University of Engineering and Technology. (2016-2019)
+            \item \textbf{Moinuddin Shuvo}, Bangladesh University of Engineering and Technology. (2016-2019)
+            \item \textbf{Oishwarya Bhowmik}, Bangladesh University of Engineering and Technology. (2016-2019)
+            \item \textbf{Md Shajedul Hoque Thakur}, Bangladesh University of Engineering and Technology. (2020)
+            \item \textbf{Mahmudul Islam}, Bangladesh University of Engineering and Technology. (2020)
+        \end{enumerate}
+    \end{itemize}
+    
 
 \end{document}
