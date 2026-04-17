@@ -1,3 +1,19 @@
+\ifdefined\isinternal
+\else\ifdefined\ispublic
+\else
+    % 1. Build Full CV
+    \immediate\write18{xelatex -jobname=CV_Abdullah_Amin "\string\def\string\isinternal{1}\string\input{\jobname}"}
+    \immediate\write18{biber CV_Abdullah_Amin}
+    \immediate\write18{xelatex -jobname=CV_Abdullah_Amin "\string\def\string\isinternal{1}\string\input{\jobname}"}
+
+    % 2. Build Public CV
+    \immediate\write18{xelatex -jobname=CV_Abdullah_Public "\string\def\string\ispublic{1}\string\input{\jobname}"}
+    \immediate\write18{biber CV_Abdullah_Public}
+    \immediate\write18{xelatex -jobname=CV_Abdullah_Public "\string\def\string\ispublic{1}\string\input{\jobname}"}
+    
+    \expandafter\stop
+\fi\fi
+
 \documentclass[11pt, letterpaper]{article}
 
 % Packages:
@@ -10,6 +26,7 @@
 \usepackage{changepage} % for one column entries (adjustwidth environment)
 \usepackage{enumitem} % for customizing lists
 \usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{etoolbox}
 \usepackage{fancyhdr}
 \usepackage{fontawesome5} % for using icons
 \usepackage{geometry} % for adjusting page geometry
@@ -40,7 +57,12 @@
   }
 }
 
-
+% \ifdefined\alreadybuilt
+% % do nothing (prevents infinite loop)
+% \else
+% \immediate\write18{xelatex -jobname=cv_full "\string\def\string\alreadybuilt{1}\string\input{\jobname.tex}"}
+% \immediate\write18{xelatex -jobname=cv_public "\string\def\string\alreadybuilt{1}\string\input{\jobname.tex}"}
+% \fi
 
 
 \begin{document}
@@ -412,7 +434,7 @@ of Engineering and Technology, Dhaka. (2004 - 2008)
         \item \textbf{Summer 2024, PI}, "Reduce defect and improve part quality for metal additive manufacturing", Summer Undergraduate Research Experience Program, University of Dayton, \$6,250.
     \end{enumerate}
 
-\section{Awarded Grants Pre UDayton}
+\section{Awarded Grants Pre Faculty}
     \begin{enumerate}[label=\arabic*., itemsep=-1pt, topsep=2pt]    
         \item \textbf{August 11, 2022, PI}, NASA GPU Hackathon 2022, Three-day intensive GPU training, NASA-NVIDIA.
         \item \textbf{April 2022, Contributing Author}, “GPU Accelerated Computational Mechanics at Northwestern University”, McCormick Equipment Awards, \$20,000.
@@ -421,6 +443,7 @@ of Engineering and Technology, Dhaka. (2004 - 2008)
         \item \textbf{November, 2016, Co-PI}, "Crystis: A biocrystal detection system", VentureWell, USA. \$5,000.
         \item \textbf{August, 2016, Contributing Author}, "Supercomputer to model MRI quench strains", Ohio Supercomputer Center. \$ 50,000 Compute hours.
     \end{enumerate}
+\ifdefined\isinternal
 \section{Pending Grants}
     \begin{enumerate}[label=\arabic*., itemsep=-1pt, topsep=2pt]
         \item \textbf{June 2025, Co-I}, "Accelerating the Manufacturing Advantage for OHIO", Ohio Department of Higher Education, Investigators: Ohio State University, University of Cincinnati, Miami University, Wright State University, Central State University, Shawnee State University, Ohio University, Bowling Green State University, University of Toledo, Cleveland State University, Case Western Reserve University, Kent State University, University of Akron, Youngstown State University. \$20,000,000, UDayton Share \$1,750,854.
@@ -447,7 +470,9 @@ of Engineering and Technology, Dhaka. (2004 - 2008)
         \item \textbf{January 2022, Contributing Author}, Hybrid Equivalence- and Model-Based Approach for Machine-to-Machine Fatigue Life Qualification” NIST Metals-based Additive Manufacturing Grant Program. 
         \item \textbf{December 2021, Contributing Author}, Collaborative Research: Framework Implementations: HiDeNN-CI: Hierarchical Deep-learning Neural Network Cyberinfrastructure,” NSF - Cyberinfrastructure for Sustained Scientific Innovation.
     \end{enumerate}
+\fi
 
+    
 \section{Invited Talks}
     \begin{enumerate}[label=I\arabic*., itemsep=-1pt, topsep=2pt]    
         \item “Hybrid Twins Across Scales: Multiphysics Modeling of Additive Manufacturing and Superconducting Magnets, University of Cincinnati, Department of Mechanical \& Materials Engineering, March 6, 2026.
@@ -469,9 +494,10 @@ of Engineering and Technology, Dhaka. (2004 - 2008)
         \item "Stress and Strain Sensitivity Study of 1.5T Conduction Cooled MgB\textsubscript{2} Magnet Design." May 2016, ISMRM 23rd annual meeting \& exhibition, Toronto, Canada.
         \item “High throughput microparticle separation on curved microchannel based on inertial microfluidics.” September 2013, Intel Corporation, Oregon USA.
     \end{enumerate}    
-
+  
 \section{Services}
     \begin{itemize}
+        \ifdefined\isinternal
         \item \textbf{Grant Review Panels}
         \begin{enumerate}[label=\arabic*., itemsep=-1pt, topsep=2pt]    
             \item Ad-hoc Reviewer, NextFlex, NextFlex's Project Call 10.0, May, 2025.
@@ -480,6 +506,7 @@ of Engineering and Technology, Dhaka. (2004 - 2008)
             \item Panelist, National Science Foundation, Partnerships for Research and Education in Materials (PREM), April, 2024.
             \item Panelist, National Science Foundation, Communications, Circuits and Sensing-Systems, Division of Electrical, Communications and Cyber Systems, November, 2023.
         \end{enumerate}
+        \fi
         \item \textbf{Conference Session Chair}
         \begin{enumerate}[label=\arabic*., itemsep=-1pt, topsep=2pt]    
             \item Session Chair, ‘Materials 1’, 49th Dayton-Cincinnati Aerospace Sciences Symposium, Dayton, OH, March 5, 2024.
