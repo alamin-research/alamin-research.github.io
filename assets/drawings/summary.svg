@@ -29,8 +29,8 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.4770342"
-     inkscape:cx="224.09772"
-     inkscape:cy="384.89291"
+     inkscape:cx="224.43624"
+     inkscape:cy="384.89292"
      inkscape:window-width="2880"
      inkscape:window-height="1514"
      inkscape:window-x="6469"
@@ -783,7 +783,10 @@
        id="style7427">&#10;.MsftOfcResponsive_Fill_003087 {&#10; fill:#003087; &#10;}&#10;</style><style
        id="style10269">&#10;.MsftOfcResponsive_Fill_141b4d {&#10; fill:#141B4D; &#10;}&#10;</style><style
        id="style11433">&#10;.MsftOfcResponsive_Fill_003087 {&#10; fill:#003087; &#10;}&#10;</style><g
-       id="g36"><g
+       id="g36"
+       inkscape:export-filename="summary.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><g
          id="g9"
          transform="translate(-3.5466224,-9.3506892)"
          style="opacity:0.96"><g
