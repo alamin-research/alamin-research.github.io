@@ -1,0 +1,275 @@
+\ifdefined\isbuilt
+\else
+    % Build 2-page CV (xelatex -> biber -> xelatex x2; defernumbers needs the extra pass)
+    \immediate\write18{xelatex -interaction=nonstopmode -jobname=CV_Abdullah_Amin_2page "\string\def\string\isbuilt{1}\string\input{\jobname}"}
+    \immediate\write18{biber CV_Abdullah_Amin_2page}
+    \immediate\write18{xelatex -interaction=nonstopmode -jobname=CV_Abdullah_Amin_2page "\string\def\string\isbuilt{1}\string\input{\jobname}"}
+    \immediate\write18{xelatex -interaction=nonstopmode -jobname=CV_Abdullah_Amin_2page "\string\def\string\isbuilt{1}\string\input{\jobname}"}
+
+    \expandafter\stop
+\fi
+
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage{amsmath} % for math
+\usepackage{array} % tabularx requires this
+\usepackage[backend=biber,style=numeric, sorting=pubdate, maxnames=999, defernumbers=true]{biblatex}
+\usepackage{calc} % for calculating lengths
+\usepackage{CV}
+\usepackage{bookmark} % for bookmarks
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{enumitem} % for customizing lists
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{etoolbox}
+\usepackage{fancyhdr}
+\usepackage{fontawesome5} % for using icons
+\usepackage{geometry} % for adjusting page geometry
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+\usepackage{ifthen} % for conditional statements
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{paracol} % for two and three column entries
+\usepackage[default, type1]{sourcesanspro}
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage[explicit]{titlesec} % for customizing section titles
+\usepackage[normalem]{ulem}
+\usepackage[dvipsnames]{xcolor} % for coloring text
+
+
+\addbibresource{references.bib}
+
+% Tag entries with keywords used for filtering and counting. "final" stops the
+% map when the match fails, so only matching entries get the keyword; the
+% appendstrict step adds a comma only when the entry already has keywords.
+\DeclareSourcemap{
+  \maps[datatype=bibtex, overwrite]{
+    \map{
+      \step[fieldsource=type, match=\regexp{Poster}, final]
+      \step[fieldset=keywords, fieldvalue={,}, appendstrict]
+      \step[fieldset=keywords, fieldvalue={poster}, append]
+    }
+    \map{
+      \step[fieldsource=journal, match=\regexp{arXiv}, final]
+      \step[fieldset=keywords, fieldvalue={,}, appendstrict]
+      \step[fieldset=keywords, fieldvalue={preprint}, append]
+    }
+    \map{
+      \step[fieldsource=year, match=\regexp{Under\s+Review}, final]
+      \step[fieldset=keywords, fieldvalue={,}, appendstrict]
+      \step[fieldset=keywords, fieldvalue={underreview}, append]
+    }
+  }
+}
+
+% --- Compact overrides of CV.sty ---
+\geometry{
+    ignoreheadfoot,
+    top=0.55 in,
+    bottom=0.6 in,
+    left=0.6 in,
+    right=0.6 in,
+    footskip=0.3 in,
+}
+
+% Smaller section titles with tighter spacing (runs after CV.sty's hook)
+\AtBeginDocument{%
+  \titleformat{\section}{%
+      \needspace{3\baselineskip}%
+      \large\color{MajorColor}%
+  }{}{0pt}{%
+    \phantomsection\textbf{#1}\hspace{0.15cm}\titlerule[0.6pt]\hspace{-0.1cm}%
+  }[]
+  \titlespacing{\section}{0pt}{5 pt}{2 pt}
+}
+
+% Compact bibliography
+\renewcommand*{\bibfont}{\small}
+\setlength{\bibitemsep}{1 pt}
+
+% Entry: left text (wraps) with right-aligned date/amount on the first line
+\newcommand{\cvitem}[2]{%
+    \par\noindent
+    \begin{tabularx}{\linewidth}[t]{@{}X@{\hspace{8 pt}}r@{}}
+        #1 & \small\color{darkgray}#2
+    \end{tabularx}\par
+}
+% Indented, smaller detail line under an entry
+\newcommand{\cvdetail}[1]{%
+    {\small\leftskip=10 pt\noindent #1\par}%
+}
+\setlist[itemize]{nosep, leftmargin=12 pt, label=\textbullet}
+
+% --- Automatic publication counts ---
+% \countbib{\macro}{filters} counts the entries a \printbibliography with
+% those filters would print, typesetting them into a discarded box, and
+% stores the result in \macro. Use inside a refsection with \nocite{*}.
+\newcounter{bibcount}
+\defbibenvironment{countonly}
+    {\setbox0=\vbox\bgroup}
+    {\egroup}
+    {\stepcounter{bibcount}}
+\newcommand{\countbib}[2]{%
+    \setcounter{bibcount}{0}%
+    \printbibliography[heading=none, env=countonly, #2]%
+    \xdef#1{\arabic{bibcount}}%
+}
+% \countof{n}{singular}{plural}
+\newcommand{\countof}[3]{#1~\ifnum#1=1 #2\else #3\fi}
+
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{}
+
+    \placelastupdatedtext
+    \begin{header}
+        \fontsize{22 pt}{22 pt}\selectfont
+        \textbf{Abdullah Al Amin, Ph.D.}
+        \vspace{2 pt}
+
+        \small
+        \textcolor{MajorColor}{Assistant Professor, Department of Mechanical and Aerospace Engineering, University of Dayton}\\
+        \vspace{-5 pt}
+        \textcolor{MajorColor}{Principal Investigator,} \href{https://smalt.dev/}{Smart Manufacturing Advancement and Logistics Technology (SMALT) Lab}\\
+        \vspace{-5 pt}
+        \makebox[\linewidth][c]{%
+            \mbox{\hrefWithoutArrow{https://maps.app.goo.gl/KFMYjjU7kE1WcG4c7}{{\footnotesize\faMapMarker*}\hspace*{2 pt}Dayton, OH}}%
+            \kern 6 pt%
+            \AND%
+            \kern 6 pt%
+            \mbox{\hrefWithoutArrow{mailto:aamin1@udayton.edu}{{\footnotesize\faEnvelope[regular]}\hspace*{2 pt}aamin1@udayton.edu}}%
+            \kern 6 pt%
+            \AND%
+            \kern 6 pt%
+            \mbox{\hrefWithoutArrow{tel:+1 857 231 0198}{{\footnotesize\faPhone*}\hspace*{2 pt} +1 857 231 0198}}%
+            \kern 6 pt%
+            \AND%
+            \kern 6 pt%
+            \mbox{\hrefWithoutArrow{https://linkedin.com/in/neoceph}{{\footnotesize\faLinkedin}\hspace*{2 pt}LinkedIn}}%
+            \kern 6 pt%
+            \AND%
+            \kern 6 pt%
+            \mbox{\hrefWithoutArrow{https://scholar.google.com/citations?user=dkLvoWwAAAAJ&hl=en&oi=sra}{{\footnotesize\faGraduationCap}\hspace*{2 pt}GScholar}}%
+            \kern 6 pt%
+            \AND%
+            \kern 6 pt%
+            \mbox{\hrefWithoutArrow{https://github.com/alamin-research}{{\footnotesize\faGithub}\hspace*{2 pt}Github}}%
+        }
+    \end{header}
+    \vspace{-4 pt}
+
+
+\section{Research Interests}
+    \noindent
+    \begin{tabularx}{\linewidth}{@{}X@{\hspace{10 pt}}X@{}}
+        \textbf{Additive Manufacturing:} laser powder bed fusion process modeling; part qualification via non-destructive evaluation &
+        \textbf{Computational Science:} multiphysics \& multiscale modeling, high performance computing, scientific machine learning \\
+        \textbf{Superconducting Magnets:} MRI magnets, tokamak fusion magnets, magnetic sensing devices &
+        \textbf{Energy \& Materials:} metal matrix composites, superconducting wires, solar cells, batteries
+    \end{tabularx}
+
+\section{Education}
+    \cvitem{\textbf{Ph.D.}, Mechanical Engineering, Case Western Reserve University (Advisers: Prof. Michael Martens \& Prof. Ozan Akkus)}{2018}
+    \cvdetail{Thesis: \textit{Multiscale Multiphysics Thermo-Mechanical Modeling of an MgB$_2$ Based Conduction Cooled MRI Magnet System}}
+    \cvitem{\textbf{M.S.}, Mechanical Engineering, The University of Akron}{2014}
+    \cvitem{\textbf{B.S.}, Mechanical Engineering, Bangladesh University of Engineering and Technology}{2009}
+
+\section{Appointments}
+    \cvitem{\textbf{Assistant Professor}, Mechanical and Aerospace Engineering, University of Dayton, Dayton, OH}{Aug 2023 -- Present}
+    \cvitem{\textbf{Postdoctoral Fellow}, Mechanical Engineering, Northwestern University, Evanston, IL}{Feb 2021 -- Jul 2023}
+    \cvdetail{Adviser: Prof. Wing Kam Liu. Developed an FVM-based high-fidelity multiphysics laser powder bed fusion solver.}
+    \cvitem{\textbf{Research Engineer}, Bridgestone Americas Technical Center, Akron, OH}{Jan 2018 -- Jan 2021}
+    \cvdetail{Hybrid analytical-FEA tire analysis framework for cornering and braking; composite polymer material modeling.}
+    \cvitem{\textbf{Graduate Research Assistant}, Case Western Reserve University; The University of Akron}{Aug 2010 -- Dec 2017}
+    \cvdetail{Multiscale multiphysics model of a full-body 1.5 T MRI magnet; high-throughput microparticle separation; soft microgripper.}
+
+\section{Research Funding}
+    \cvitem{\textbf{PI}, NSF, \href{https://www.nsf.gov/awardsearch/show-award?AWD_ID=2501711}{``Hot Cracking and Porosity Detection in Metal Additive Manufacturing using Eddy Current Sensor''}, Award No.\ 2501711}{\$125,000, 2025 -- 2027}
+    \cvitem{\textbf{Co-PI}, UD MAE ACT, ``AI-Enhanced Engineering Design and Product Realization Readiness Across the Mechanical Engineering Curriculum''}{\$70,000, 2026}
+    \cvitem{\textbf{Co-I}, UD Supercritical CO$_2$ Center of Excellence, ``Experimental Investigation of Blended sCO$_2$ Power Cycle Heat Exchangers''}{\$20,000, 2025}
+    \cvitem{\textbf{PI}, UD--UDRI Summer Faculty Fellow}{\$14,500, 2024}
+    \cvitem{\textbf{PI}, UD Research Council Seed Grant, ``Defect Detection and Part Quality Improvements for Metal Additive Manufacturing''}{\$6,500, 2025}
+    \cvitem{\textbf{PI}, UD Summer Undergraduate Research Experience (2 awards) and Experiential Learning Innovation Fund (2 awards)}{\$14,750, 2024 -- 2026}
+    \cvitem{\textbf{Pre-faculty:} NASA GPU Hackathon (PI, 2022); VentureWell (Co-PI, \$5,000, 2016); contributing author on McCormick Equipment Award (\$20,000) and HPC allocations from XSEDE, Northwestern Quest, and Ohio Supercomputer Center}{2016 -- 2022}
+
+\section{Selected Publications}
+    % Count every entry in references.bib (separate refsection, so the
+    % selected lists below are unaffected)
+    \begin{refsection}
+        \nocite{*}
+        \countbib{\articlecount}{type=article}
+        \countbib{\journalcount}{type=article, notkeyword=preprint, notkeyword=underreview}
+        \countbib{\confcount}{type=inproceedings}
+        \countbib{\postercount}{type=misc, keyword=poster}
+        \countbib{\patentcount}{type=patent}
+    \end{refsection}
+    \edef\otherarticlecount{\the\numexpr\articlecount-\journalcount\relax}
+    % Invited talks are not in references.bib; update this number by hand
+    {\small \countof{\journalcount}{peer-reviewed journal article}{peer-reviewed journal articles}%
+    \ifnum\otherarticlecount>0 { (+\otherarticlecount{} preprint/under review)}\fi,
+    \countof{\confcount}{conference proceeding}{conference proceedings},
+    \countof{\postercount}{poster}{posters},
+    \countof{\patentcount}{U.S. patent}{U.S. patents}, 18 invited talks. \uline{Underline}: Amin; \textcolor{MinorColor}{red*}: mentee. Full list on \href{https://scholar.google.com/citations?user=dkLvoWwAAAAJ&hl=en&oi=sra}{Google Scholar}.\par}
+    \nocite{
+        sultanaPredictionRamanSignatures2026,
+        kumarLaserPowderBed2026a,
+        aminPhysicsGuidedHeat2024,
+        liStatisticalParameterizedPhysicsbased2024,
+        mojumderLinkingProcessParameters2023,
+        aminComputationalHomogenizationElastic2018a,
+        baigConceptualDesignsConduction2017a,
+        aminMultiscaleMultiphysicsModel2016a,
+        zotero-item-10752,
+        aminRapidAeroStructuralDesign2025,
+        sultanaFlexibleParallelizablePython2025,
+        baigMagnetoopticalDetectionDiscernment2024}
+    \vspace{2 pt}
+    \textbf{Journal Articles}
+    \begin{refcontext}[labelprefix=J]
+        \printbibliography[heading=none, type=article]
+    \end{refcontext}
+    \textbf{Conference Proceedings}
+    \begin{refcontext}[labelprefix=C]
+        \printbibliography[heading=none, type=inproceedings]
+    \end{refcontext}
+    \textbf{Patent}
+    \begin{refcontext}[labelprefix=P]
+        \printbibliography[heading=none, type=patent]
+    \end{refcontext}
+    \textbf{Software:} \href{https://github.com/neoceph/AM-CFD}{AM-CFD}, an FVM-based additive manufacturing process simulator (2024 -- present); \href{https://nanohub.org/resources/fgmbuilder}{FGM Builder}, a LAMMPS input generator for functionally graded materials (nanoHUB, 2019).
+
+\section{Honors \& Awards}
+    \cvitem{\textbf{1st Place} (3 challenges) and \textbf{2nd Place} (1 challenge), NIST AM-Bench 2022: melt pool geometry, cooling rate, and time above melting predictions for laser powder bed fusion of IN718}{2022}
+    \cvitem{\textbf{Honorable Mention}, NIST AM-Bench 2025: multi-track melt pool geometry prediction with residual heat}{2025}
+    \cvitem{\textbf{Participant}, NASA GPU Hackathon (one of nine teams selected worldwide)}{2022}
+    \cvitem{\textbf{Fellow}, NSF CMMI Game Changer Academies for Advancing Research Innovation}{2021}
+    \cvitem{\textbf{Contest Runner-Up}, Superconductivity News Forum, Applied Superconductivity Conference}{2016}
+
+\section{Selected Invited Talks}
+    \begin{itemize}
+        \item University of Cincinnati, Dept.\ of Mechanical \& Materials Engineering (2026); Air Force Research Laboratory, RXNP (2026)
+        \item Faculty seminars (2023): Univ.\ of Wisconsin--Milwaukee, Florida Institute of Technology, South Dakota School of Mines, Univ.\ of Dayton, Univ.\ of Akron, Univ.\ of Houston, Univ.\ of Minnesota Duluth
+        \item NIST Additive Manufacturing Benchmarks (AM-Bench 2022); Intel Corporation (2013, 2017); Bridgestone Americas (2017)
+    \end{itemize}
+
+\section{Teaching \& Mentoring}
+    \cvitem{\textbf{University of Dayton:} MEE 427 Mechanical Design I; MEE 490/590 Advanced Manufacturing; MEE 490/590 Scientific Machine Learning}{2023 -- Present}
+    \cvitem{\textbf{Northwestern University:} Assistant Director, Predictive Science and Engineering Design (PSE\&D) fellowship program; Guest Lecturer, Mechanistic Data Science and Advanced FEM II}{2021 -- 2023}
+    \cvitem{\textbf{Earlier:} Graduate Teaching Assistant, Case Western Reserve University and The University of Akron; Lecturer, Green University of Bangladesh}{2009 -- 2017}
+    \cvitem{\textbf{Mentoring:} at University of Dayton, 2 Ph.D. students, 4 M.S./graduate researchers (1 graduated), and 8 undergraduate researchers; previously co-mentored 5 graduate students at Northwestern and 7 remote students at BUET}{2016 -- Present}
+
+\section{Professional Service}
+    \begin{itemize}
+        \item \textbf{Grant Review:} NSF panelist (Advanced Manufacturing 2025, 2026; PREM 2024; ECCS 2023); NSF ad-hoc reviewer (2025); NextFlex Project Calls 10.0 and 11.0 (2025, 2026)
+        \item \textbf{Journal Reviewer (23 journals):} Additive Manufacturing, Computational Mechanics, Scientific Reports, International Journal of Mechanical Sciences, Applied Thermal Engineering, SME Journal of Manufacturing Processes, Superconductor Science and Technology, IEEE Access, and others
+        \item \textbf{Conferences \& Workshops:} Session Chair, 49th Dayton-Cincinnati Aerospace Sciences Symposium (2024); Co-organizer, Mechanistic Data Science workshops at 16th USNCCM and MMLDT-CSET (2021)
+        \item \textbf{University:} Mechanics, Materials, Manufacturing \& Mechanical Design (M4) Curriculum Committee (2023 -- Present)
+        \item \textbf{Memberships:} U.S. Association for Computational Mechanics; The Minerals, Metals \& Materials Society
+    \end{itemize}
+
+\end{document}
