@@ -8,6 +8,7 @@
 \RequirePackage{geometry}
 \RequirePackage[unicode]{hyperref} % for links, metadata and bookmarks
 \RequirePackage{ifthen}
+\RequirePackage{tikz}
 \RequirePackage{xcolor}
 \RequirePackage{xstring}
 
@@ -100,6 +101,25 @@
   \begin{itemize}[topsep=1 pt, parsep=1 pt, partopsep=0pt,itemsep=0pt,leftmargin=10pt]
 }{%%
   \end{itemize}
+}
+
+% Course rating bar on a 0-5 scale: \ratingbar{term}{rating}
+\newlength{\ratingbarwidth}
+\setlength{\ratingbarwidth}{10em}
+\newcommand{\ratingbar}[2]{%
+    \item[]\makebox[5em][l]{#1}%
+    \raisebox{0.1ex}{%
+        \begin{tikzpicture}[baseline=0pt]
+            \fill[black!15] (0,0) rectangle (\ratingbarwidth,0.7ex);
+            \begin{scope}
+                \clip (0,0) rectangle (\dimexpr#2\ratingbarwidth/5\relax,0.7ex);
+                % Keep the gradient anchored to the full 0-5 scale.
+                \shade[left color=orange, right color=green!60!black, middle color=yellow!80!orange]
+                    (0,0) rectangle (\ratingbarwidth,0.7ex);
+            \end{scope}
+        \end{tikzpicture}%
+    }%
+    \hspace{0.6em}#2/5.0%
 }
 
 % One-column entry wrapper
