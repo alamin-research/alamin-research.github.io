@@ -98,6 +98,9 @@
 \newcommand{\cvdetail}[1]{%
     {\small\leftskip=10 pt\noindent #1\par}%
 }
+% Dollar amounts in University of Dayton red (same red as MinorColor in CV.sty)
+\colorlet{FlyersRed}{MinorColor}
+\newcommand{\amount}[1]{\textcolor{FlyersRed}{\$#1}}
 \setlist[itemize]{nosep, leftmargin=12 pt, label=\textbullet}
 
 % --- Automatic publication counts ---
@@ -189,13 +192,13 @@
     \cvdetail{Multiscale multiphysics model of a full-body 1.5 T MRI magnet; high-throughput microparticle separation; soft microgripper.}
 
 \section{Research Funding}
-    \cvitem{\textbf{PI}, NSF, \href{https://www.nsf.gov/awardsearch/show-award?AWD_ID=2501711}{``Hot Cracking and Porosity Detection in Metal Additive Manufacturing using Eddy Current Sensor''}, Award No.\ 2501711}{\$125,000, 2025 -- 2027}
-    \cvitem{\textbf{Co-PI}, UD MAE ACT, ``AI-Enhanced Engineering Design and Product Realization Readiness Across the Mechanical Engineering Curriculum''}{\$70,000, 2026}
-    \cvitem{\textbf{Co-I}, UD Supercritical CO$_2$ Center of Excellence, ``Experimental Investigation of Blended sCO$_2$ Power Cycle Heat Exchangers''}{\$20,000, 2025}
-    \cvitem{\textbf{PI}, UD--UDRI Summer Faculty Fellow}{\$14,500, 2024}
-    \cvitem{\textbf{PI}, UD Research Council Seed Grant, ``Defect Detection and Part Quality Improvements for Metal Additive Manufacturing''}{\$6,500, 2025}
-    \cvitem{\textbf{PI}, UD Summer Undergraduate Research Experience (2 awards) and Experiential Learning Innovation Fund (2 awards)}{\$14,750, 2024 -- 2026}
-    \cvitem{\textbf{Pre-faculty:} NASA GPU Hackathon (PI, 2022); VentureWell (Co-PI, \$5,000, 2016); contributing author on McCormick Equipment Award (\$20,000) and HPC allocations from XSEDE, Northwestern Quest, and Ohio Supercomputer Center}{2016 -- 2022}
+    \cvitem{\textbf{PI}, NSF, \href{https://www.nsf.gov/awardsearch/show-award?AWD_ID=2501711}{``Hot Cracking and Porosity Detection in Metal Additive Manufacturing using Eddy Current Sensor''}, Award No.\ 2501711}{\amount{125,000}, 2025 -- 2027}
+    \cvitem{\textbf{Co-PI}, UD MAE ACT, ``AI-Enhanced Engineering Design and Product Realization Readiness Across the Mechanical Engineering Curriculum''}{\amount{70,000}, 2026}
+    \cvitem{\textbf{Co-I}, UD Supercritical CO$_2$ Center of Excellence, ``Experimental Investigation of Blended sCO$_2$ Power Cycle Heat Exchangers''}{\amount{20,000}, 2025}
+    \cvitem{\textbf{PI}, UD--UDRI Summer Faculty Fellow}{\amount{14,500}, 2024}
+    \cvitem{\textbf{PI}, UD Research Council Seed Grant, ``Defect Detection and Part Quality Improvements for Metal Additive Manufacturing''}{\amount{6,500}, 2025}
+    \cvitem{\textbf{PI}, UD Summer Undergraduate Research Experience (2 awards) and Experiential Learning Innovation Fund (2 awards)}{\amount{14,750}, 2024 -- 2026}
+    \cvitem{\textbf{Pre-faculty:} NASA GPU Hackathon (PI, 2022); VentureWell (Co-PI, \amount{5,000}, 2016); contributing author on McCormick Equipment Award (\amount{20,000}) and HPC allocations from XSEDE, Northwestern Quest, and Ohio Supercomputer Center}{2016 -- 2022}
 
 \section{Selected Publications}
     % Count every entry in references.bib (separate refsection, so the
@@ -244,8 +247,8 @@
     \textbf{Software:} \href{https://github.com/neoceph/AM-CFD}{AM-CFD}, an FVM-based additive manufacturing process simulator (2024 -- present); \href{https://nanohub.org/resources/fgmbuilder}{FGM Builder}, a LAMMPS input generator for functionally graded materials (nanoHUB, 2019).
 
 \section{Honors \& Awards}
-    \cvitem{\textbf{1st Place} (3 challenges) and \textbf{2nd Place} (1 challenge), NIST AM-Bench 2022: melt pool geometry, cooling rate, and time above melting predictions for laser powder bed fusion of IN718}{2022}
     \cvitem{\textbf{Honorable Mention}, NIST AM-Bench 2025: multi-track melt pool geometry prediction with residual heat}{2025}
+    \cvitem{\textbf{1st Place} (3 challenges) and \textbf{2nd Place} (1 challenge), NIST AM-Bench 2022: melt pool geometry, cooling rate, and time above melting predictions for laser powder bed fusion of IN718}{2022}
     \cvitem{\textbf{Participant}, NASA GPU Hackathon (one of nine teams selected worldwide)}{2022}
     \cvitem{\textbf{Fellow}, NSF CMMI Game Changer Academies for Advancing Research Innovation}{2021}
     \cvitem{\textbf{Contest Runner-Up}, Superconductivity News Forum, Applied Superconductivity Conference}{2016}
