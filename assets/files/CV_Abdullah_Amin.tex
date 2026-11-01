@@ -10,7 +10,14 @@
     \immediate\write18{xelatex -jobname=CV_Abdullah_Public "\string\def\string\ispublic{1}\string\input{\jobname}"}
     \immediate\write18{biber CV_Abdullah_Public}
     \immediate\write18{xelatex -jobname=CV_Abdullah_Public "\string\def\string\ispublic{1}\string\input{\jobname}"}
-    
+
+    % 3. Build Full CV with References
+    \immediate\write18{xelatex -jobname=CV_Abdullah_References "\string\def\string\isinternal{1}\string\def\string\isreferences{1}\string\input{\jobname}"}
+    \immediate\write18{biber CV_Abdullah_References}
+    \immediate\write18{xelatex -jobname=CV_Abdullah_References "\string\def\string\isinternal{1}\string\def\string\isreferences{1}\string\input{\jobname}"}
+    % Extra pass so a clean build counts the bibliography in "Page X of Y"
+    \immediate\write18{xelatex -jobname=CV_Abdullah_References "\string\def\string\isinternal{1}\string\def\string\isreferences{1}\string\input{\jobname}"}
+
     \expandafter\stop
 \fi\fi
 
@@ -619,5 +626,32 @@ of Engineering and Technology, Dhaka. (2004 - 2008)
             \item \textbf{Ethan White}, Master's Thesis Committee, Spring 2025
         \end{enumerate}
     \end{itemize}
+
+\ifdefined\isreferences
+\section{References}
+
+    \begin{onecolentry}
+        \textbf{Wing Kam Liu, Ph.D.}\\
+        Professor of Mechanical Engineering, Northwestern University\\
+        2145 Sheridan Road, Tech A326, Evanston, IL 60208-3109\\
+        Phone: 847.491.7094, Email: \hrefWithoutArrow{mailto:w-liu@northwestern.edu}{w-liu@northwestern.edu}
+    \end{onecolentry}
+    \vspace{5 pt}
+
+    \begin{onecolentry}
+        \textbf{Gregory Wagner, Ph.D.}\\
+        Associate Professor of Mechanical Engineering, Northwestern University\\
+        2145 Sheridan Road, Tech L492, Evanston, IL 60208-3109\\
+        Phone: 847.491.4138, Email: \hrefWithoutArrow{mailto:gregory.wagner@northwestern.edu}{gregory.wagner@northwestern.edu}
+    \end{onecolentry}
+    \vspace{5 pt}
+
+    \begin{onecolentry}
+        \textbf{Ozan Akkus, Ph.D.}\\
+        Professor of Mechanical \& Aerospace Engineering, Case Western Reserve University\\
+        Glennan Building 615\\
+        Phone: 216.368.4175, Email: \hrefWithoutArrow{mailto:oxa@case.edu}{oxa@case.edu}
+    \end{onecolentry}
+\fi
 
 \end{document}
